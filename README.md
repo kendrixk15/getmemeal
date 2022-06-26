@@ -1,7 +1,9 @@
 # Getting Started with Create React App
 ## Available Scripts
 
-install node module before start the project
+install node module before start the project:
+
+### `yarn install`
 
 In the project directory, you can run:
 
