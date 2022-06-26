@@ -33,10 +33,10 @@ function App() {
     <div className="pageControl bg-borderLine ">
       <div>
         {/* Header */}
-        <div className="fixed w-full -top-1 z-20">
+        <div className="fixed w-full -top-1 z-50">
           <Header />
         </div>
-        <div className="fixed -top-0 z-30">
+        <div className="fixed -top-0 z-50">
           <SideNav />
         </div>
         {/* Main content */}

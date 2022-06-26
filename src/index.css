@@ -33,7 +33,7 @@
     @apply font-kanit bg-borderLine h-full
   }
   .contentControl{
-    @apply w-full py-4 flex lg:justify-between items-center  flex-col lg:flex-row container
+    @apply w-full py-4 flex lg:justify-between items-center flex-col lg:flex-row container
   }
   .prime-btn{
     @apply bg-mainBlue text-white
@@ -43,6 +43,10 @@
   }
   .thin-border{
     @apply border-[1px]
+  }
+
+  .slideCarousel .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before{
+    @apply px-1 
   }
 
 }

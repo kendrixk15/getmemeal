@@ -24,26 +24,28 @@ function HomePage() {
   const disablePoint = Math.ceil(typedCardList.length / limit);
 
   useEffect(() => {
-    if (currentList === []) {
+    if (currentList.length === 0) {
       console.log("empty");
     } else {
       console.log(currentList);
     }
   });
   return (
-    <div className="bg-borderLine ">
-      <div className="flex justify-center lg:ml-24 pb-36">
-        <main className="h-[100vh] ">
+    <div className="bg-borderLine h-full w-fit">
+      <div className="flex justify-center lg:ml-24 pb-0 ">
+        <main className="h-full">
           {/* search section */}
-          <section className="w-full lg:min-w-[90%] xl:min-w-full fixed top-[3.19rem] bg-borderLine pr-2 pt-2 ">
-            <div className="contentControl">
-              <h4 className="">Place List</h4>
+          <section className="w-full lg:w-[90%] xl:min-w-full fixed top-[3.19rem] bg-borderLine pr-2 pt-2 z-40">
+            <div className="contentControl pl-4 ">
+              <div className="w-full pl-6 lg:pl-0 z-40">
+                <h4>Place List</h4>
+              </div>
               <form className="flex gap-2 items-center flex-col lg:flex-row ">
                 <div>
                   {/* dropdown */}
                   <select
                     onChange={(e) => (setType(e.target.value), setPage(1))}
-                    className={`thin-border  py-1 border-mainBlue rounded-xl ${
+                    className={`thin-border  py-1 border-mainBlue rounded-xl w-96 lg:w-auto ${
                       type === "" ? ` text-midGray` : `text-mainBlue`
                     }`}
                   >
@@ -82,23 +84,31 @@ function HomePage() {
               </form>
             </div>
           </section>
-          <section className="mt-52 lg:mt-[8rem] ">
-            <div className="contentControl w-full px-1">
-              <div className="flex w-[100vw] 2xl:justify-center h-full flex-wrap gap-6">
-                {currentList
-                  ? currentList.map((list) => (
-                      <div key={list.id}>
-                        <CardList {...list} />
-                      </div>
-                    ))
-                  : `we cannot find place`}
+          <section className="mt-52 lg:mt-[8rem] lg:pl-4">
+            <div className="contentControl w-full px-1 mb-2">
+              <div className="flex w-[100vw] justify-center lg:justify-start 2xl:justify-center h-auto mt-2 flex-wrap gap-6">
+                {currentList.length !== 0 ? (
+                  currentList.map((list) => (
+                    <div key={list.id}>
+                      <CardList {...list} />
+                    </div>
+                  ))
+                ) : (
+                  <div className="w-full flex  justify-center h-full lg:h-[35vw] text-center">
+                    <h1 className="text-mainBlue">
+                      We cannot find <br /> "
+                      <span className="text-minorBlue">{keyword}</span>" <br />{" "}
+                      Please try other keywords
+                    </h1>
+                  </div>
+                )}
               </div>
             </div>
           </section>
           {/* pagination */}
           <div
-            className={`mb-14 flex  justify-center w-full gap-2 items-center  ${
-              currentList.length <= 6 ? `mt-[15.5rem]` : ``
+            className={`mb-14 flex  justify-center w-full gap-5 items-center  ${
+              currentList.length <= 6 ? `mt-[16rem]` : ``
             }`}
           >
             <button
